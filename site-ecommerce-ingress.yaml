@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: site-ecommerce-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: site-ecommerce.example
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: site-ecommerce-service
+                port:
+                  number: 80
